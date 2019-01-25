@@ -95,7 +95,7 @@ void loop1(void) {
   int i,j;
   //#pragma omp parallel 
   //{   
-  #pragma omp parallel for schedule(dynamic,32) private(i,j)
+  #pragma omp parallel for schedule(dynamic,32) default(none) private(i,j)
   for (i=0; i<N; i++){ 
     for (j=N-1; j>i; j--){
       a[i][j] += cos(b[i][j]);
@@ -113,7 +113,7 @@ void loop2(void) {
  // #pragma omp parallel 
   //{
   rN2 = 1.0 / (double) (N*N);  
-  #pragma omp parallel for schedule(dynamic,16) private(i,j,k)
+  #pragma omp parallel for schedule(dynamic,16) default(none) private(i,j,k)
   for (i=0; i<N; i++){ 
     for (j=0; j < jmax[i]; j++){
       for (k=0; k<j; k++){ 
